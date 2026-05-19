@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+
+actor Admin
+actor Manager
+actor Dispatcher
+actor Accountant
+actor Employee
+actor Guest
+
+rectangle "Supply & Contract Risk System" {
+  usecase "Register / Login" as UC1
+  usecase "Create supplier" as UC2
+  usecase "Create contract" as UC3
+  usecase "Create shipment" as UC4
+  usecase "Update shipment status" as UC5
+  usecase "Calculate contract risk" as UC6
+  usecase "Create incident" as UC7
+  usecase "Escalate incident" as UC8
+  usecase "Calculate penalty" as UC9
+  usecase "Get dashboard" as UC10
+  usecase "Get supplier score" as UC11
+  usecase "Get audit report" as UC12
+}
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC12
+Manager --> UC1
+Manager --> UC3
+Manager --> UC6
+Manager --> UC10
+Dispatcher --> UC4
+Dispatcher --> UC5
+Dispatcher --> UC7
+Dispatcher --> UC8
+Accountant --> UC9
+Accountant --> UC12
+Employee --> UC10
+Employee --> UC11
+Guest --> UC1
+@enduml

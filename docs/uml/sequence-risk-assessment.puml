@@ -1,0 +1,21 @@
+@startuml
+actor Manager
+participant "JavaFX Client" as Client
+participant "TCP Server" as Server
+participant "RequestRouter" as Router
+participant "SupplyService" as Service
+database "PostgreSQL" as DB
+
+Manager -> Client: Click "Calculate risk"
+Client -> Server: ApiRequest(CALCULATE_CONTRACT_RISK)
+Server -> Router: route(request)
+Router -> Service: calculateContractRisk(contractId)
+Service -> DB: load contract + delayed shipments
+DB --> Service: data set
+Service -> Service: WeightedRiskStrategy.calculate()
+Service -> DB: persist RiskAssessmentEntity
+Service --> Router: risk result
+Router --> Server: ApiResponse(success)
+Server --> Client: JSON response
+Client --> Manager: show risk score and level
+@enduml

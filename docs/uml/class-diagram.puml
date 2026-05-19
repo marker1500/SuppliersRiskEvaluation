@@ -1,0 +1,25 @@
+@startuml
+hide methods
+hide stereotypes
+
+class BaseEntity
+class UserEntity
+class SupplierEntity
+class ContractEntity
+class ShipmentEntity
+class RiskAssessmentEntity
+class IncidentEntity
+
+BaseEntity <|-- UserEntity
+BaseEntity <|-- SupplierEntity
+BaseEntity <|-- ContractEntity
+BaseEntity <|-- ShipmentEntity
+BaseEntity <|-- RiskAssessmentEntity
+BaseEntity <|-- IncidentEntity
+
+SupplierEntity "1" -- "0..*" ContractEntity
+ContractEntity "1" -- "0..*" ShipmentEntity
+ContractEntity "1" -- "0..*" RiskAssessmentEntity
+ShipmentEntity "1" -- "0..*" IncidentEntity
+UserEntity "1" -- "1..*" Role
+@enduml

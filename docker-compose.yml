@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: supply_pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: supply_db
+      POSTGRES_USER: supply_user
+      POSTGRES_PASSWORD: "1111"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+
+  server:
+    build: .
+    container_name: supply_server
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      JAVA_TOOL_OPTIONS: >-
+        -Dapp.port=9090
+        -Dapp.threads=24
+        -Dapp.db.url=jdbc:postgresql://postgres:5432/supply_db
+        -Dapp.db.user=supply_user
+        -Dapp.db.password=1111
+    ports:
+      - "9090:9090"
+
+volumes:
+  pgdata:

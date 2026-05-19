@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Драйвер PostgreSQL -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <!-- Адрес базы данных (база данных supply_db должна существовать) -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/supply_db</property>
+
+        <!-- Имя пользователя (обычно postgres) -->
+        <property name="hibernate.connection.username">postgres</property>
+
+        <!-- ПАРОЛЬ: ЗАМЕНИТЕ НА ВАШ РЕАЛЬНЫЙ ПАРОЛЬ ОТ POSTGRESQL -->
+        <property name="hibernate.connection.password">ваш_пароль_здесь</property>
+
+        <!-- Диалект (Hibernate сам подберет, но можно указать явно) -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Показывать SQL в консоли -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Форматировать SQL для читаемости -->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Автоматическое создание/обновление таблиц -->
+        <!-- validate: проверить схему, но не менять -->
+        <!-- update: обновить схему (добавить новые таблицы/колонки) -->
+        <!-- create: пересоздать все таблицы (удалит данные!) -->
+        <!-- create-drop: создать при запуске, удалить при остановке -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+    </session-factory>
+</hibernate-configuration>

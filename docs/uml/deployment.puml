@@ -1,0 +1,14 @@
+@startuml
+node "Client PC (Windows 10/11)" {
+  artifact "JavaFX Client"
+}
+
+node "Server Host / Docker" {
+  artifact "TCP Server (Java 21)"
+}
+
+database "PostgreSQL 17" as PG
+
+"JavaFX Client" --> "TCP Server (Java 21)" : TCP/IP sockets (JSON)
+"TCP Server (Java 21)" --> PG : JDBC/Hibernate
+@enduml

@@ -1,0 +1,22 @@
+package by.bsuir.coursework.common;
+
+public enum CommandType {
+    REGISTER,
+    LOGIN,
+    GET_ORDERS,
+    UPDATE_CONTRACT_STATUS,
+    CREATE_SUPPLIER,
+    CREATE_CONTRACT,
+    CREATE_SHIPMENT,
+    UPDATE_SHIPMENT_STATUS,
+    CALCULATE_CONTRACT_RISK,
+    GET_DASHBOARD,
+    GET_SUPPLIER_SCORE,
+    CREATE_INCIDENT,
+    ESCALATE_INCIDENT,
+    CALCULATE_PENALTY,
+    GET_AUDIT,
+    SUBSCRIBE_ALERTS,
+    UPDATE_CONTRACT,      // новое
+    GET_SUPPLIERS         // новое
+}
